@@ -103,7 +103,7 @@
 		language "C++"
 		kind "SharedLib"
 		
-		links { "Shared", "GameNY", "ws2_32" }
+		links { "Shared", "GameNY", "ws2_32", "avformat", "avcodec", "avresample", "avutil"	}
 		
 		defines "COMPILING_HOOKS"		
 		

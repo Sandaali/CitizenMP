@@ -35,6 +35,11 @@ static void __declspec(naked) InvokeEndSceneCBStub()
 	}
 }
 
+static void __stdcall InvokeCreateCB(void*, void*)
+{
+	HookCallbacks::RunCallback(StringHash("d3dCreate"), nullptr);
+}
+
 static HookFunction hookFunction([] ()
 {
 	static hook::inject_call<void, int> beginSceneCB(0x633403);
@@ -51,6 +56,9 @@ static HookFunction hookFunction([] ()
 
 	// same, for during loading text
 	hook::call(0x7BD74D, InvokeEndSceneCBStub);
+
+	// device creation
+	hook::jump(0xD3033C, InvokeCreateCB);
 
 	// frontend render phase
 	//hook::put(0xE9F1AC, InvokeFrontendCBStub);

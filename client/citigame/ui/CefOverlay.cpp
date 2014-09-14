@@ -225,6 +225,8 @@ public:
 	{
 		auto url = frame->GetURL();
 
+		trace("[CefOverlay] OnLoadEnd %s\n", url.ToString().c_str());
+
 		if (url == "nui://game/ui/root.html" && g_mainUIFlag)
 		{
 			nui::CreateFrame("mpMenu", "nui://game/ui/mpmenu.html");
@@ -903,6 +905,8 @@ namespace nui
 		{
 			int resX = *(int*)0xFDCEAC;
 			int resY = *(int*)0xFDCEB0;
+
+			trace("[CefOverlay] D3D device created\n");
 
 			g_nuiResourceRootWindow = NUIWindow::Create(true, resX, resY, "nui://game/ui/root.html");
 			g_nuiResourceRootWindow->SetPaintType(NUIPaintTypePostRender);

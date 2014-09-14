@@ -246,7 +246,7 @@ int __stdcall XLiveUninitialize()
 
 int __stdcall XLiveOnCreateDevice(DWORD, DWORD)
 {
-	HookCallbacks::RunCallback(StringHash("d3dCreate"), nullptr);
+	//HookCallbacks::RunCallback(StringHash("d3dCreate"), nullptr);
 
 	return 0;
 }

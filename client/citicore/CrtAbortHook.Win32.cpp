@@ -18,6 +18,4 @@ static InitFunction initFunction([] ()
 	signal(SIGABRT, HandleAbort);
 
 	_set_abort_behavior(0, _WRITE_ABORT_MSG);
-
-	abort();
 });

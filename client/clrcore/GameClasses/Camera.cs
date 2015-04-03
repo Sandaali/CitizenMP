@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CitizenFX.Core.client.clrcore.GameClasses
+namespace CitizenFX.Core
 {
     public sealed class Camera : HandleObject
     {

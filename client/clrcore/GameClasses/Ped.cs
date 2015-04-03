@@ -552,6 +552,204 @@ namespace CitizenFX.Core
             else Function.Call(Natives.WARP_CHAR_INTO_CAR_AS_PASSENGER, m_handle, v.Handle);
         }
 
+        public void PriorityTargetForEnemies(bool value)
+        {
+            Function.Call(Natives.SET_CHAR_IS_TARGET_PRIORITY, m_handle, value);
+        }
+
+        public void SenseRange(float value)
+        {
+            Function.Call(Natives.SET_SENSE_RANGE, m_handle, value);
+        }
+
+        public void WantedByPolice(bool value)
+        {
+            Function.Call(Natives.SET_CHAR_WANTED_BY_POLICE, m_handle, value);
+        }
+
+        public void WillDoDrivebys(bool value)
+        {
+            Function.Call(Natives.SET_CHAR_WILL_DO_DRIVEBYS, m_handle, value);
+        }
+
+        public void WillFlyThroughWindscreen(bool value)
+        {
+            Function.Call(Natives.SET_CHAR_WILL_FLY_THROUGH_WINDSCREEN, m_handle, value);
+        }
+
+        public void WillUseCarsInCombat(bool value)
+        {
+            Function.Call(Natives.SET_CHAR_WILL_USE_CARS_IN_COMBAT, m_handle, value);
+        }
+
+
+        public void CantBeDamagedByRelationGroup(RelationshipGroup group, bool value)
+        {
+            Function.Call(Natives.SET_CHAR_NOT_DAMAGED_BY_RELATIONSHIP_GROUP, m_handle, value, (int)group);
+        }
+
+        public void FireDamageMultiplier(float value)
+        {
+            Function.Call(Natives.SET_CHAR_FIRE_DAMAGE_MULTIPLIER, m_handle, value);
+        }
+
+        public void GravityMultiplier(float value)
+        {
+            Function.Call(Natives.SET_CHAR_GRAVITY, m_handle, value);
+        }
+
+        public bool HasBeenDamagedBy(Weapon weapon)
+        {
+            return Function.Call<bool>(Natives.HAS_CHAR_BEEN_DAMAGED_BY_WEAPON, m_handle, ((int)(Weapons)weapon));
+        }
+
+        public bool HasBeenDamagedBy(Vehicle vehicle)
+        {
+            return Function.Call<bool>(Natives.HAS_CHAR_BEEN_DAMAGED_BY_CAR, m_handle, vehicle.Handle);
+        }
+
+        public bool HasBeenDamagedBy(Ped ped)
+        {
+            return Function.Call<bool>(Natives.HAS_CHAR_BEEN_DAMAGED_BY_CHAR, m_handle, ped.Handle);
+        }
+
+        public bool IsInVehicle(Vehicle vehicle)
+        {
+            return Function.Call<bool>(Natives.IS_CHAR_IN_CAR, m_handle, vehicle.Handle);
+        }
+
+        public bool IsInVehicle()
+        {
+            return Function.Call<bool>(Natives.IS_CHAR_IN_ANY_CAR, m_handle);
+        }
+
+        public bool IsSittingInVehicle(Vehicle vehicle)
+        {
+            return Function.Call<bool>(Natives.IS_CHAR_SITTING_IN_CAR, m_handle, vehicle.Handle);
+        }
+
+        public bool IsSittingInVehicle()
+        {
+            return Function.Call<bool>(Natives.IS_CHAR_SITTING_IN_ANY_CAR, m_handle);
+        }
+
+        public bool IsTouching(GameObject Object)
+        {
+            return Function.Call<bool>(Natives.IS_CHAR_TOUCHING_OBJECT, m_handle, Object.Handle);
+        }
+
+        public bool IsTouching(Vehicle vehicle)
+        {
+            return Function.Call<bool>(Natives.IS_CHAR_TOUCHING_VEHICLE, m_handle, vehicle.Handle);
+        }
+
+        public bool IsTouching(Ped ped)
+        {
+            return Function.Call<bool>(Natives.IS_CHAR_TOUCHING_CHAR, m_handle, ped.Handle);
+        }
+
+        public bool IsInArea(Vector3 Corner1, Vector3 Corner2, bool IgnoreHeight)
+        {
+            if (IgnoreHeight) return Function.Call<bool>(Natives.IS_CHAR_IN_AREA_2D, m_handle, Corner1.X, Corner1.Y, Corner2.X, Corner2.Y, false);
+            else return Function.Call<bool>(Natives.IS_CHAR_IN_AREA_3D, m_handle, Corner1.X, Corner1.Y, Corner1.Z, Corner2.X, Corner2.Y, Corner2.Z, false);
+        }
+
+        public Vector3 GetOffsetPosition(Vector3 Offset)
+        {
+            Pointer x = typeof(float), y = typeof(float), z = typeof(float);
+            Function.Call(Natives.GET_OFFSET_FROM_CHAR_IN_WORLD_COORDS, m_handle, Offset.X, Offset.Y, Offset.Z, x, y, z);
+            return new Vector3((float)x, (float)y, (float)z);
+        }
+
+        public void SetPathfinding(bool AllowClimbovers, bool AllowLadders, bool AllowDropFromHeight)
+        {
+            Function.Call(Natives.SET_PED_PATH_MAY_USE_CLIMBOVERS, m_handle, AllowClimbovers);
+            Function.Call(Natives.SET_PED_PATH_MAY_USE_LADDERS, m_handle, AllowLadders);
+            Function.Call(Natives.SET_PED_PATH_MAY_DROP_FROM_HEIGHT, m_handle, AllowDropFromHeight);
+        }
+
+        public void RemoveFakeNetworkName()
+        {
+            Function.Call(Natives.REMOVE_FAKE_NETWORK_NAME_FROM_PED, m_handle);
+        }
+
+        public void FleeByVehicle(Vehicle vehicle)
+        {
+            Function.Call(Natives.FORCE_PED_TO_FLEE_WHILST_DRIVING_VEHICLE, m_handle, vehicle.Handle);
+        }
+
+        public void ShootAt(Vector3 Position)
+        {
+            Function.Call(Natives.FIRE_PED_WEAPON, m_handle, Position.X, Position.Y, Position.Z);
+        }
+
+        public void ForceHelmet(bool enable)
+        {
+            if (enable) Function.Call(Natives.GIVE_PED_HELMET, m_handle);
+            else Function.Call(Natives.REMOVE_PED_HELMET, m_handle);
+        }
+
+        public void ForceRagdoll(int duration, bool TryToStayUpright)
+        {
+            PreventRagdoll = false;
+            Function.Call(Natives.SWITCH_PED_TO_RAGDOLL, m_handle, 10000, duration, (TryToStayUpright ? 2 : 0), 1, 1, 0);
+            //Behavior:
+            // 0 = Plain ragdoll, no movement
+            // 1 = Stiff NULL position / NM Control
+            // 2 = Try to stand
+        }
+
+        public void SetDefensiveArea(Vector3 Position, float Radius)
+        {
+            Function.Call(Natives.SET_CHAR_SPHERE_DEFENSIVE_AREA, m_handle, Position.X, Position.Y, Position.Z, Radius);
+        }
+
+        public void MakeProofTo(bool Bullets, bool Fire, bool Explosions, bool FallingDamage, bool MeleeAttacks)
+        {
+            Function.Call(Natives.SET_CHAR_PROOFS, m_handle, Bullets, Fire, Explosions, FallingDamage, MeleeAttacks);
+        }
+
+        public void DropCurrentWeapon()
+        {
+            Function.Call(Natives.FORCE_CHAR_TO_DROP_WEAPON, m_handle);
+        }
+
+        public void LeaveGroup()
+        {
+            Function.Call(Natives.REMOVE_CHAR_FROM_GROUP, m_handle);
+        }
+
+        public void LeaveVehicle()
+        {
+            Function.Call(Natives.TASK_LEAVE_ANY_CAR, m_handle);
+        }
+
+        public void RandomizeOutfit()
+        {
+            Function.Call(Natives.SET_CHAR_RANDOM_COMPONENT_VARIATION, m_handle);
+        }
+
+        public void BecomeMissionCharacter()
+        {
+            Function.Call(Natives.SET_CHAR_AS_MISSION_CHAR, m_handle);
+        }
+
+        public void CancelAmbientSpeech()
+        {
+            Function.Call(Natives.CANCEL_CURRENTLY_PLAYING_AMBIENT_SPEECH, m_handle);
+        }
+
+        public void SayAmbientSpeech(string PhraseID)
+        {
+            CancelAmbientSpeech();
+            Function.Call(Natives.SAY_AMBIENT_SPEECH, m_handle, PhraseID, true, true, false);
+        }
+
+        public void SetDefaultVoice()
+        {
+            Function.Call(Natives.SET_VOICE_ID_FROM_HEAD_COMPONENT, m_handle, false, (this.Gender == Gender.Male));
+        }
+
         public bool Exists
         {
             get

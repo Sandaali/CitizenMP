@@ -750,6 +750,16 @@ namespace CitizenFX.Core
             Function.Call(Natives.SET_VOICE_ID_FROM_HEAD_COMPONENT, m_handle, false, (this.Gender == Gender.Male));
         }
 
+        private WeaponCollection _pWeapons;
+        public WeaponCollection Weapons
+        {
+            get
+            {
+                if (_pWeapons == null) _pWeapons = new WeaponCollection(this);
+                return _pWeapons;
+            }
+        }
+        
         public bool Exists
         {
             get

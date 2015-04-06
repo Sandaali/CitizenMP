@@ -28,7 +28,7 @@ namespace CitizenFX.Core
             get
             {
                 Pointer modelPtr = typeof(int);
-                Function.Call(Natives.GET_CHAR_MODEL, modelPtr);
+                Function.Call(Natives.GET_CHAR_MODEL, m_handle, modelPtr);
                 return new Model((int)modelPtr);
             }
         }

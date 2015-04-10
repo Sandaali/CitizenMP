@@ -80,6 +80,7 @@
     <Compile Include="client\clrcore\GameClasses\VehicleDoor.cs" />
     <Compile Include="client\clrcore\GameClasses\VehicleExtra.cs" />
     <Compile Include="client\clrcore\GameClasses\Weapon.cs" />
+    <Compile Include="client\clrcore\GameClasses\WeaponCollection.cs" />
     <Compile Include="client\clrcore\GameInterface.cs" />
     <Compile Include="client\clrcore\Math\GameMath.cs" />
     <Compile Include="client\clrcore\Math\MathUtil.cs" />

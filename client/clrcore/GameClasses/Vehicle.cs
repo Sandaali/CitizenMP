@@ -772,7 +772,7 @@ namespace CitizenFX.Core
             Function.Call(Natives.CLOSE_ALL_CAR_DOORS, m_handle);
         }
 
-        public void Delete() //shouldn't this be in the Entity class?
+        public void Delete()
         {
             //SetExistsFalse();
 
@@ -814,7 +814,7 @@ namespace CitizenFX.Core
             Function.Call(Natives.EXPLODE_CAR, m_handle, true, false);
         }
 
-        public void NoLongerNeeded() //shouldn't this be in the Entity class as well?
+        public void NoLongerNeeded()
         {
             Pointer p = m_handle;
             Function.Call(Natives.MARK_CAR_AS_NO_LONGER_NEEDED, p, m_handle);

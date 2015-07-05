@@ -8,4 +8,4 @@ libdirs { "../../../vendor/luajit/src/" }
 
 includedirs { "../../../vendor/luajit/src/" }
 
-links { 'lua51' }
+links { 'lua51x86' }

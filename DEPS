@@ -7,7 +7,7 @@ deps = {
 	"build/premake": "http://github.com/annulen/premake.git",
 	"vendor/jitasm": "http://jitasm.googlecode.com/svn/trunk/",
 	"vendor/yaml-cpp": "https://github.com/jbeder/yaml-cpp.git",
-	"vendor/msgpack-c": "https://github.com/msgpack/msgpack-c.git",
+	"vendor/msgpack-c": "https://github.com/msgpack/msgpack-c.git@a37e7232c75950078404c7c3339c0e872ed4591e",
 	"vendor/zlib": "https://github.com/madler/zlib.git",
 	"vendor/gmock": "http://googlemock.googlecode.com/svn/trunk/",
 	"vendor/gtest": "http://googletest.googlecode.com/svn/trunk/",

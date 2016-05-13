@@ -25,7 +25,7 @@ gclient sync
 ```
 > **_DO NOT CLOSE CMD!_**
  
-After all of that steps you must download premake5 from [this site](https://premake.github.io/) than use the command:
+After all of that steps you must download premake5 from [this site](https://premake.github.io/) and put it in multifive folder than use the command:
 ```
 premake5.exe vs2015 --game=five
 ```

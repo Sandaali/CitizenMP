@@ -1,0 +1,3 @@
+download from this site http://www.dabeaz.com/ply/
+
+install and build and put ply folder in idl/xpidl

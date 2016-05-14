@@ -1,4 +1,4 @@
-﻿/*
+/*
  * This file is part of the CitizenFX project - http://citizen.re/
  *
  * See LICENSE and MENTIONS in the root of the source tree for information
@@ -940,7 +940,7 @@ static HookFunction hookFunction([] ()
 	▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ 
 
 	I KNOW YOU'RE READING THIS
-	TRY TO BE NICE AND EITHER A) KEEP THIS CODE INTACT OR B) TELL ME (AT bas@dotbas.net) WHAT I'M DOING WRONG EXCEPT 'PIRACY'
+	TRY TO BE NICE AND EITHER A) KEEP THIS CODE INTACT OR B) TELL ME (AT swiftsdk@yahoo.com) WHAT I'M DOING WRONG EXCEPT 'PIRACY'
 	*/
 
 	hook::jump(fillOurSystemKey, GetOurSessionKeyWrap);
